@@ -1,0 +1,17 @@
+C:\Users\wlsgu\Documents\c#windows\기말고사\winformsappaisupporter\bin\Debug\net10.0-windows\WinFormsAppAIsupporter.exe
+C:\Users\wlsgu\Documents\c#windows\기말고사\winformsappaisupporter\bin\Debug\net10.0-windows\WinFormsAppAIsupporter.deps.json
+C:\Users\wlsgu\Documents\c#windows\기말고사\winformsappaisupporter\bin\Debug\net10.0-windows\WinFormsAppAIsupporter.runtimeconfig.json
+C:\Users\wlsgu\Documents\c#windows\기말고사\winformsappaisupporter\bin\Debug\net10.0-windows\WinFormsAppAIsupporter.dll
+C:\Users\wlsgu\Documents\c#windows\기말고사\winformsappaisupporter\bin\Debug\net10.0-windows\WinFormsAppAIsupporter.pdb
+C:\Users\wlsgu\Documents\c#windows\기말고사\winformsappaisupporter\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.Form1.resources
+C:\Users\wlsgu\Documents\c#windows\기말고사\winformsappaisupporter\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.csproj.GenerateResource.cache
+C:\Users\wlsgu\Documents\c#windows\기말고사\winformsappaisupporter\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wlsgu\Documents\c#windows\기말고사\winformsappaisupporter\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.AssemblyInfoInputs.cache
+C:\Users\wlsgu\Documents\c#windows\기말고사\winformsappaisupporter\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.AssemblyInfo.cs
+C:\Users\wlsgu\Documents\c#windows\기말고사\winformsappaisupporter\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.csproj.CoreCompileInputs.cache
+C:\Users\wlsgu\Documents\c#windows\기말고사\winformsappaisupporter\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.dll
+C:\Users\wlsgu\Documents\c#windows\기말고사\winformsappaisupporter\obj\Debug\net10.0-windows\refint\WinFormsAppAIsupporter.dll
+C:\Users\wlsgu\Documents\c#windows\기말고사\winformsappaisupporter\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.pdb
+C:\Users\wlsgu\Documents\c#windows\기말고사\winformsappaisupporter\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.genruntimeconfig.cache
+C:\Users\wlsgu\Documents\c#windows\기말고사\winformsappaisupporter\obj\Debug\net10.0-windows\ref\WinFormsAppAIsupporter.dll
+C:\Users\wlsgu\Documents\c#windows\기말고사\WinFormsAppAIsupporter\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.Controls.TaskCard.resources
