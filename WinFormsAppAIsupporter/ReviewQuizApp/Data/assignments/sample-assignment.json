@@ -1,0 +1,14 @@
+{
+  "id": "sample-assignment",
+  "title": "Review Quiz Module Assignment",
+  "description": "Implement a review quiz module for assignment study.",
+  "requirements": [
+    "Generate O/X, multiple choice, and short answer questions from assignment data.",
+    "Let the user choose question count and difficulty.",
+    "Show quiz questions, grade answers, and display results.",
+    "Save quiz result history for later review.",
+    "Handle missing API keys, empty assignment data, invalid quiz data, unanswered questions, and result recording errors."
+  ],
+  "source": "team-project-role-6",
+  "updatedAt": "2026-06-06T00:00:00"
+}
