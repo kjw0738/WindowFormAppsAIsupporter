@@ -14,13 +14,13 @@ public sealed class AiQuizGeneratorConfig
 
     public static AiQuizGeneratorConfig Load()
     {
-        var groqKey = Environment.GetEnvironmentVariable("GROQ_API_KEY");
+        var groqKey = GetEnvironmentVariable("GROQ_API_KEY");
         if (!string.IsNullOrWhiteSpace(groqKey))
         {
             return new AiQuizGeneratorConfig(AiProvider.Groq, groqKey);
         }
 
-        var xaiKey = Environment.GetEnvironmentVariable("XAI_API_KEY");
+        var xaiKey = GetEnvironmentVariable("XAI_API_KEY");
         if (!string.IsNullOrWhiteSpace(xaiKey))
         {
             if (LooksLikeGroqKey(xaiKey))
@@ -31,19 +31,26 @@ public sealed class AiQuizGeneratorConfig
             return new AiQuizGeneratorConfig(AiProvider.Xai, xaiKey);
         }
 
-        var geminiKey = Environment.GetEnvironmentVariable("GEMINI_API_KEY");
+        var geminiKey = GetEnvironmentVariable("GEMINI_API_KEY");
         if (!string.IsNullOrWhiteSpace(geminiKey))
         {
             return new AiQuizGeneratorConfig(AiProvider.Gemini, geminiKey);
         }
 
-        var openAiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
+        var openAiKey = GetEnvironmentVariable("OPENAI_API_KEY");
         if (!string.IsNullOrWhiteSpace(openAiKey))
         {
             return new AiQuizGeneratorConfig(AiProvider.OpenAI, openAiKey);
         }
 
         return new AiQuizGeneratorConfig(AiProvider.None, string.Empty);
+    }
+
+    private static string? GetEnvironmentVariable(string name)
+    {
+        return Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process)
+            ?? Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.User)
+            ?? Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Machine);
     }
 
     private static bool LooksLikeGroqKey(string apiKey)

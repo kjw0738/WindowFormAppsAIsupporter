@@ -12,6 +12,7 @@ public sealed class ReviewQuizModuleControl : UserControl
         {
             TopLevel = false,
             FormBorderStyle = FormBorderStyle.None,
+            MinimumSize = Size.Empty,
             Dock = DockStyle.Fill
         };
 

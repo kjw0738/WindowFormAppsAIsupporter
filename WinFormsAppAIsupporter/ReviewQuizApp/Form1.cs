@@ -72,7 +72,7 @@ public partial class Form1 : Form
             Dock = DockStyle.Fill,
             ColumnCount = 1,
             RowCount = 2,
-            Padding = new Padding(28),
+            Padding = new Padding(18),
             BackColor = Color.FromArgb(248, 250, 252)
         };
         root.RowStyles.Add(new RowStyle(SizeType.AutoSize));
@@ -249,7 +249,7 @@ public partial class Form1 : Form
             Dock = DockStyle.Top,
             Font = new Font("Segoe UI", 16F, FontStyle.Bold),
             ForeColor = Color.FromArgb(15, 23, 42),
-            Height = 96
+            Height = 72
         };
         _answerPanel = new FlowLayoutPanel { Dock = DockStyle.Fill, FlowDirection = FlowDirection.TopDown, WrapContents = false, AutoScroll = true };
         _feedbackLabel = new Label
@@ -258,7 +258,7 @@ public partial class Form1 : Form
             Dock = DockStyle.Bottom,
             Font = new Font("Segoe UI", 11F),
             ForeColor = Color.FromArgb(51, 65, 85),
-            Height = 112,
+            Height = 92,
             Padding = new Padding(0, 12, 0, 0)
         };
 
@@ -266,7 +266,7 @@ public partial class Form1 : Form
         questionArea.Controls.Add(_answerPanel, 0, 1);
         questionArea.Controls.Add(_feedbackLabel, 0, 2);
 
-        var footer = new FlowLayoutPanel { Dock = DockStyle.Bottom, FlowDirection = FlowDirection.RightToLeft, AutoSize = true, Padding = new Padding(0, 18, 0, 0) };
+        var footer = new FlowLayoutPanel { Dock = DockStyle.Bottom, FlowDirection = FlowDirection.RightToLeft, AutoSize = true, Padding = new Padding(0, 12, 0, 0) };
         _submitButton = CreateButton("제출");
         _checkButton = CreateButton("정답 확인");
         _nextButton = CreateButton("다음");
@@ -293,7 +293,7 @@ public partial class Form1 : Form
     private Panel BuildHistoryPage()
     {
         var page = new Panel { Dock = DockStyle.Fill, BackColor = Color.FromArgb(248, 250, 252) };
-        var root = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, RowCount = 3, Padding = new Padding(0, 24, 0, 0), BackColor = Color.FromArgb(248, 250, 252) };
+        var root = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, RowCount = 3, Padding = new Padding(0, 12, 0, 0), BackColor = Color.FromArgb(248, 250, 252) };
         root.RowStyles.Add(new RowStyle(SizeType.Percent, 45));
         root.RowStyles.Add(new RowStyle(SizeType.Percent, 55));
         root.RowStyles.Add(new RowStyle(SizeType.AutoSize));
@@ -327,7 +327,7 @@ public partial class Form1 : Form
         detailPanel.Controls.Add(_historySummaryLabel, 0, 0);
         detailPanel.Controls.Add(_historyDetailList, 0, 1);
 
-        var footer = new FlowLayoutPanel { Dock = DockStyle.Bottom, FlowDirection = FlowDirection.RightToLeft, AutoSize = true, Padding = new Padding(0, 18, 0, 0) };
+        var footer = new FlowLayoutPanel { Dock = DockStyle.Bottom, FlowDirection = FlowDirection.RightToLeft, AutoSize = true, Padding = new Padding(0, 12, 0, 0) };
         _retryQuizButton = CreateButton("다시 풀기");
         _deleteHistoryButton = CreateButton("선택 삭제");
         _deleteAllHistoryButton = CreateButton("전체 삭제");
