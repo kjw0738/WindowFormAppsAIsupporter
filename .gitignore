@@ -427,3 +427,9 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Review quiz module local outputs
+**/build-check/
+**/Data/history/
+**/Data/generated-quizzes/
+**/Data/generated-quiz-latest.json
