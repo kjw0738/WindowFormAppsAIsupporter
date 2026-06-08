@@ -8,26 +8,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="ReviewQuizApp\**\*.cs" />
-    <EmbeddedResource Remove="ReviewQuizApp\**\*.resx" />
-    <None Remove="ReviewQuizApp\**\*" />
-    <Content Remove="ReviewQuizApp\**\*" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="ReviewQuizApp\ReviewQuizApp.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="ReviewQuizApp\Data\assignments\*.json">
-      <Link>Data\assignments\%(Filename)%(Extension)</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ReviewQuizApp\Data\sample-quiz.json">
-      <Link>Data\sample-quiz.json</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>
