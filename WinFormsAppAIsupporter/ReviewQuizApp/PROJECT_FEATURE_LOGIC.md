@@ -124,6 +124,7 @@ AI는 다음 규칙을 따라 퀴즈를 생성한다.
 프로젝트는 WinForms 기반이며, 주요 책임은 다음과 같이 분리되어 있다.
 
 - `Form1.cs`: 전체 화면 구성, 사용자 입력 처리, 페이지 전환, 퀴즈 풀이 흐름 제어
+- `Controls/ReviewQuizModuleControl.cs`: 팀 메인 앱에 붙이기 위한 퀴즈 모듈 UserControl 래퍼
 - `Forms/QuizResultForm.cs`: 제출 후 결과창 표시
 - `Services/AssignmentRepository.cs`: 과제 JSON 파일 로드
 - `Services/AssignmentQuizGenerator.cs`: AI 설정 확인 후 내부 생성기로 요청 위임
@@ -202,7 +203,29 @@ AI 프롬프트는 `InternalAiAssignmentQuizGenerator.BuildPrompt()`에서 생�
 
 각 제공자는 서로 다른 API 형식을 사용하지만, 최종적으로는 동일한 `QuizDataFile` 구조의 JSON을 반환하도록 요청한다.
 
-### 3.7 퀴즈 데이터 모델
+### 3.7 팀 프로젝트 통합 방식
+
+현재 퀴즈 파트는 독립 실행도 가능하지만, 팀 메인 프로젝트에 붙이기 쉽도록 `ReviewQuizModuleControl`을 제공한다.
+
+팀 메인 앱에서 퀴즈 패널에 붙일 때는 다음 방식으로 사용할 수 있다.
+
+```csharp
+using ReviewQuizApp.Controls;
+
+panelQuizView.Controls.Clear();
+panelQuizView.Controls.Add(new ReviewQuizModuleControl());
+```
+
+이 컨트롤은 내부적으로 기존 퀴즈 폼을 border 없는 embedded form으로 띄운다. 따라서 기존 퀴즈 생성, 풀이, 기록 조회 로직을 유지하면서도 팀 메인 앱의 패널 기반 구조에 붙일 수 있다.
+
+최종 통합 시에는 다음 파일은 메인 앱의 단일 진입점과 충돌할 수 있으므로 직접 병합 대상에서 제외하거나 관리자가 조정해야 한다.
+
+- `Program.cs`
+- 독립 실행용 `Form1.Designer.cs`
+
+통합 프로젝트의 타겟 프레임워크와 맞추기 위해 현재 퀴즈 프로젝트의 `TargetFramework`는 `net10.0-windows`로 설정되어 있다.
+
+### 3.8 퀴즈 데이터 모델
 
 퀴즈 전체는 `QuizDataFile`로 표현된다.
 
@@ -229,7 +252,7 @@ AI 프롬프트는 `InternalAiAssignmentQuizGenerator.BuildPrompt()`에서 생�
 - `MultipleChoice`
 - `ShortAnswer`
 
-### 3.8 퀴즈 검증 로직
+### 3.9 퀴즈 검증 로직
 
 AI가 반환한 JSON은 바로 사용하지 않고 `QuizDataLoader`에서 검증한다.
 
@@ -241,7 +264,7 @@ AI가 반환한 JSON은 바로 사용하지 않고 `QuizDataLoader`에서 검증
 - O/X 문제의 선택지와 정답 형식을 정규화
 - 객관식과 O/X 문제에 선택지가 존재하는지 확인
 
-### 3.9 화면 전환 로직
+### 3.10 화면 전환 로직
 
 `Form1`은 하나의 폼 안에서 세 개의 페이지 패널을 전환한다.
 
@@ -251,7 +274,7 @@ AI가 반환한 JSON은 바로 사용하지 않고 `QuizDataLoader`에서 검증
 
 설정이 끝나고 퀴즈가 생성되면 퀴즈 풀이 페이지가 표시된다. 제출 후 결과창이 닫히면 자동으로 설정 페이지로 돌아간다.
 
-### 3.10 답안 처리 및 채점
+### 3.11 답안 처리 및 채점
 
 사용자의 답안은 `Dictionary<string, string>` 형태로 저장된다.
 
@@ -262,7 +285,7 @@ AI가 반환한 JSON은 바로 사용하지 않고 `QuizDataLoader`에서 검증
 
 채점은 `QuizDataLoader.SameAnswer()`를 사용해 사용자 답안과 정답을 비교한다. 제출 시 전체 문항을 순회하며 정답 수를 계산하고, 점수는 `CorrectCount * 100 / TotalCount` 방식으로 계산한다.
 
-### 3.11 기록 저장 구조
+### 3.12 기록 저장 구조
 
 퀴즈 결과 기록은 `QuizHistoryService`가 담당한다.
 
@@ -276,7 +299,7 @@ AI가 반환한 JSON은 바로 사용하지 않고 `QuizDataLoader`에서 검증
 
 개별 기록 삭제 시에는 히스토리 JSON에서 해당 기록을 제거하고, 해당 기록과 연결된 퀴즈 스냅샷 파일도 함께 삭제한다. 이때 삭제 대상 파일이 `Data/generated-quizzes` 폴더 내부에 있는지 확인해 다른 경로의 파일이 삭제되지 않도록 제한한다.
 
-### 3.12 예외 처리 및 안정성
+### 3.13 예외 처리 및 안정성
 
 프로그램은 다음 상황에 대해 사용자에게 경고를 표시한다.
 
@@ -310,6 +333,8 @@ AI가 반환한 JSON은 바로 사용하지 않고 `QuizDataLoader`에서 검증
 - 선택 기록 삭제
 - 전체 기록 삭제
 - 제출 후 설정 화면 자동 복귀
+- 팀 메인 앱 통합용 `ReviewQuizModuleControl`
+- 팀 프로젝트와 맞춘 `net10.0-windows` 타겟
 
 ## 5. 이번 점검 및 리팩토링 내용
 
@@ -321,6 +346,8 @@ AI가 반환한 JSON은 바로 사용하지 않고 `QuizDataLoader`에서 검증
 - 개별 기록 삭제 시 연결된 퀴즈 스냅샷 파일도 함께 삭제하도록 변경했다.
 - 히스토리 저장 로직을 `SaveRecords` 메서드로 분리해 중복을 줄였다.
 - 스냅샷 삭제 시 `Data/generated-quizzes` 폴더 내부 파일만 삭제하도록 경로 안전장치를 추가했다.
+- 팀 메인 앱의 패널 기반 구조에 붙일 수 있도록 `ReviewQuizModuleControl`을 추가했다.
+- 팀 메인 프로젝트와 프레임워크 차이를 줄이기 위해 타겟 프레임워크를 `net10.0-windows`로 맞췄다.
 
 ## 6. 향후 개선 가능 사항
 
@@ -345,4 +372,3 @@ AI가 반환한 JSON은 바로 사용하지 않고 `QuizDataLoader`에서 검증
 - 과제 JSON 또는 퀴즈 JSON 저장 구조 변경
 - 기록 저장, 조회, 삭제 로직 변경
 - 예외 처리 및 경고 메시지 변경
-
