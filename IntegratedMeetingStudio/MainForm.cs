@@ -34,6 +34,8 @@ public partial class MainForm : Form
         this.MinimumSize = new Size(900, 600);
         this.StartPosition = FormStartPosition.CenterScreen;
 
+        _darkMode = EnvManager.Get("UI_THEME", "Light") == "Dark";
+
         BuildUI();
         ApplyTheme();
         
@@ -50,7 +52,8 @@ public partial class MainForm : Form
         SetupHistoryView();
         viewKanban = new Panel { Size = new Size(1060, 700), Dock = DockStyle.Fill, Visible = false };
         SetupKanbanView();
-        viewSettings = CreateViewPanel("설정 (API Key 및 환경 설정 추가 예정)");
+        viewSettings = new Panel { Size = new Size(1060, 700), Dock = DockStyle.Fill, Visible = false };
+        SetupSettingsView();
 
         sidebarPanel = new Panel { Dock = DockStyle.Left, Width = 220, BackColor = C_BgSidebar };
         var lblLogo = new Label { Text = "🎙 AI Studio", Font = new Font("맑은 고딕", 16f, FontStyle.Bold), ForeColor = Color.White, AutoSize = true, Location = new Point(20, 20) };
@@ -1495,6 +1498,7 @@ public partial class MainForm : Form
     {
         _darkMode = !_darkMode;
         btnDarkMode.Text = _darkMode ? "☀️ 라이트 모드" : "🌙 다크 모드";
+        EnvManager.Set("UI_THEME", _darkMode ? "Dark" : "Light");
         ApplyTheme();
     }
 
@@ -1511,11 +1515,132 @@ public partial class MainForm : Form
             if (ctrl is Panel view)
             {
                 view.BackColor = C_BgMain;
-                foreach (Control child in view.Controls)
-                {
-                    if (child is Label lbl) lbl.ForeColor = C_TextDark;
-                }
+                ApplyThemeRecursive(view);
             }
         }
+    }
+
+    private void ApplyThemeRecursive(Control parent)
+    {
+        foreach (Control child in parent.Controls)
+        {
+            if (child is Label lbl) 
+            {
+                lbl.ForeColor = C_TextDark;
+            }
+            else if (child is TextBox txt)
+            {
+                txt.BackColor = C_BgPanel;
+                txt.ForeColor = C_TextDark;
+                txt.BorderStyle = BorderStyle.FixedSingle;
+            }
+            else if (child is ComboBox cmb)
+            {
+                cmb.BackColor = C_BgPanel;
+                cmb.ForeColor = C_TextDark;
+                cmb.FlatStyle = FlatStyle.Flat;
+            }
+            else if (child is GroupBox gb)
+            {
+                gb.ForeColor = C_TextDark;
+            }
+            
+            if (child.HasChildren)
+            {
+                ApplyThemeRecursive(child);
+            }
+        }
+    }
+
+    private void SetupSettingsView()
+    {
+        viewSettings.Controls.Clear();
+
+        var lblTitle = new Label
+        {
+            Text = "⚙ 설정 및 API 연동",
+            Font = new Font("맑은 고딕", 20f, FontStyle.Bold),
+            ForeColor = C_TextDark,
+            AutoSize = true,
+            Location = new Point(20, 20)
+        };
+        viewSettings.Controls.Add(lblTitle);
+
+        var pnlScroll = new Panel { Location = new Point(20, 70), Size = new Size(1000, 600), AutoScroll = true };
+        viewSettings.Controls.Add(pnlScroll);
+
+        int yPos = 10;
+
+        // --- Theme Settings ---
+        var grpTheme = new GroupBox { Text = "테마 설정", Location = new Point(0, yPos), Size = new Size(900, 80), Font = new Font("맑은 고딕", 11f, FontStyle.Bold) };
+        var rdoLight = new RadioButton { Text = "☀️ 라이트 모드", Location = new Point(20, 35), AutoSize = true, Checked = !_darkMode, Cursor = Cursors.Hand };
+        var rdoDark = new RadioButton { Text = "🌙 다크 모드", Location = new Point(180, 35), AutoSize = true, Checked = _darkMode, Cursor = Cursors.Hand };
+        
+        rdoLight.CheckedChanged += (s, e) => { if (rdoLight.Checked && _darkMode) ToggleDarkMode(); };
+        rdoDark.CheckedChanged += (s, e) => { if (rdoDark.Checked && !_darkMode) ToggleDarkMode(); };
+
+        grpTheme.Controls.AddRange(new Control[] { rdoLight, rdoDark });
+        pnlScroll.Controls.Add(grpTheme);
+        yPos += 100;
+
+        // --- API Keys ---
+        var grpApi = new GroupBox { Text = "API 키 설정", Location = new Point(0, yPos), Size = new Size(900, 160), Font = new Font("맑은 고딕", 11f, FontStyle.Bold) };
+        
+        var lblGroq = new Label { Text = "GROQ API Key:", Location = new Point(20, 40), AutoSize = true, Font = new Font("맑은 고딕", 10f) };
+        var txtGroq = new TextBox { Location = new Point(180, 38), Size = new Size(400, 25), Font = new Font("맑은 고딕", 10f), UseSystemPasswordChar = true };
+        txtGroq.Text = EnvManager.Get("GROQ_API_KEY");
+
+        var lblOpenAI = new Label { Text = "OPENAI API Key:", Location = new Point(20, 80), AutoSize = true, Font = new Font("맑은 고딕", 10f) };
+        var txtOpenAI = new TextBox { Location = new Point(180, 78), Size = new Size(400, 25), Font = new Font("맑은 고딕", 10f), UseSystemPasswordChar = true };
+        txtOpenAI.Text = EnvManager.Get("OPENAI_API_KEY");
+
+        var lblTip = new Label { Text = "* 입력된 키는 로컬 .env 파일에 안전하게 저장됩니다.", Location = new Point(180, 120), AutoSize = true, Font = new Font("맑은 고딕", 9f), ForeColor = Color.Gray };
+
+        grpApi.Controls.AddRange(new Control[] { lblGroq, txtGroq, lblOpenAI, txtOpenAI, lblTip });
+        pnlScroll.Controls.Add(grpApi);
+        yPos += 180;
+
+        // --- Model Settings ---
+        var grpModel = new GroupBox { Text = "AI 모델 설정", Location = new Point(0, yPos), Size = new Size(900, 160), Font = new Font("맑은 고딕", 11f, FontStyle.Bold) };
+        
+        var lblChatModel = new Label { Text = "LLM 추론 모델:", Location = new Point(20, 40), AutoSize = true, Font = new Font("맑은 고딕", 10f) };
+        var cmbChatModel = new ComboBox { Location = new Point(180, 38), Size = new Size(300, 25), Font = new Font("맑은 고딕", 10f), DropDownStyle = ComboBoxStyle.DropDownList };
+        cmbChatModel.Items.AddRange(new[] { "llama-3.3-70b-versatile", "mixtral-8x7b-32768", "gemma2-9b-it" });
+        cmbChatModel.SelectedItem = EnvManager.Get("GROQ_CHAT_MODEL", "llama-3.3-70b-versatile");
+
+        var lblSttProvider = new Label { Text = "STT (음성 인식):", Location = new Point(20, 80), AutoSize = true, Font = new Font("맑은 고딕", 10f) };
+        var cmbSttProvider = new ComboBox { Location = new Point(180, 78), Size = new Size(300, 25), Font = new Font("맑은 고딕", 10f), DropDownStyle = ComboBoxStyle.DropDownList };
+        cmbSttProvider.Items.AddRange(new[] { "groq", "openai" });
+        cmbSttProvider.SelectedItem = EnvManager.Get("STT_PROVIDER", "groq");
+
+        var lblSttTip = new Label { Text = "* OpenAI의 경우 OPENAI_API_KEY 등록 필수", Location = new Point(180, 120), AutoSize = true, Font = new Font("맑은 고딕", 9f), ForeColor = Color.Gray };
+
+        grpModel.Controls.AddRange(new Control[] { lblChatModel, cmbChatModel, lblSttProvider, cmbSttProvider, lblSttTip });
+        pnlScroll.Controls.Add(grpModel);
+        yPos += 180;
+
+        var btnSave = new Button
+        {
+            Text = "💾 설정 저장",
+            Location = new Point(0, yPos),
+            Size = new Size(150, 40),
+            BackColor = Color.FromArgb(46, 204, 113),
+            ForeColor = Color.White,
+            FlatStyle = FlatStyle.Flat,
+            Font = new Font("맑은 고딕", 11f, FontStyle.Bold),
+            Cursor = Cursors.Hand
+        };
+        btnSave.FlatAppearance.BorderSize = 0;
+        btnSave.Click += (s, e) => 
+        {
+            EnvManager.Set("GROQ_API_KEY", txtGroq.Text);
+            EnvManager.Set("OPENAI_API_KEY", txtOpenAI.Text);
+            EnvManager.Set("GROQ_CHAT_MODEL", cmbChatModel.SelectedItem?.ToString() ?? "llama-3.3-70b-versatile");
+            EnvManager.Set("STT_PROVIDER", cmbSttProvider.SelectedItem?.ToString() ?? "groq");
+
+            MessageBox.Show("설정이 저장되었습니다.\n일부 설정은 앱을 다시 시작해야 완전히 반영될 수 있습니다.", "저장 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        };
+
+        pnlScroll.Controls.Add(btnSave);
     }
 }
