@@ -31,3 +31,36 @@ C:\Users\seo\Downloads\수업\4-1\1-2. 월_윈도우즈프로그래밍\조별과
 C:\Users\seo\Downloads\수업\4-1\1-2. 월_윈도우즈프로그래밍\조별과제\개발중\WindowFormAppsAIsupporter-main\WinFormsAppAIsupporter\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.csproj.AssemblyReference.cache
 C:\Users\seo\Downloads\수업\4-1\1-2. 월_윈도우즈프로그래밍\조별과제\개발중\WindowFormAppsAIsupporter-main\WinFormsAppAIsupporter\obj\Debug\net10.0-windows\WinForms.FC6322BD.Up2Date
 C:\Users\seo\Downloads\수업\4-1\1-2. 월_윈도우즈프로그래밍\조별과제\개발중\WindowFormAppsAIsupporter-main\WinFormsAppAIsupporter\bin\Debug\net10.0-windows\.env
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\WinFormsAppAIsupporter.exe
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\WinFormsAppAIsupporter.deps.json
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\WinFormsAppAIsupporter.runtimeconfig.json
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\WinFormsAppAIsupporter.dll
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\WinFormsAppAIsupporter.pdb
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\DotNetEnv.dll
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\Microsoft.Extensions.Configuration.dll
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\Microsoft.Extensions.Options.dll
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\Microsoft.Extensions.Primitives.dll
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\OpenAI.dll
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\Superpower.dll
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\System.ClientModel.dll
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\bin\Debug\net10.0-windows\System.Memory.Data.dll
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.csproj.AssemblyReference.cache
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.Form1.resources
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.csproj.GenerateResource.cache
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.GeneratedMSBuildEditorConfig.editorconfig
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.AssemblyInfoInputs.cache
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.AssemblyInfo.cs
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.csproj.CoreCompileInputs.cache
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.sourcelink.json
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\obj\Debug\net10.0-windows\WinForms.FC6322BD.Up2Date
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.dll
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\obj\Debug\net10.0-windows\refint\WinFormsAppAIsupporter.dll
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.pdb
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\obj\Debug\net10.0-windows\WinFormsAppAIsupporter.genruntimeconfig.cache
+D:\코딩\깃허브\wimfromapp\WindowFormAppsAIsupporter\WinFormsSWOTandRole\obj\Debug\net10.0-windows\ref\WinFormsAppAIsupporter.dll

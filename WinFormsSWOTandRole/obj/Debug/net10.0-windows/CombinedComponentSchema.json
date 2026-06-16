@@ -475,5 +475,5 @@
     }
   },
   "type": "object",
-  "SourceSegments": "C:\\Users\\seo\\.nuget\\packages\\system.clientmodel\\1.10.0\\ConfigurationSchema.json;C:\\Users\\seo\\.nuget\\packages\\openai\\2.11.0\\ConfigurationSchema.json"
+  "SourceSegments": "C:\\Users\\sexim\\.nuget\\packages\\system.clientmodel\\1.10.0\\ConfigurationSchema.json;C:\\Users\\sexim\\.nuget\\packages\\openai\\2.11.0\\ConfigurationSchema.json"
 }
